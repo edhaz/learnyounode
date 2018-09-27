@@ -11,3 +11,5 @@ function bar (callback) {
     })
 
 }
+
+// TEST
