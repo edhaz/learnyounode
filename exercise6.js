@@ -1,15 +1,11 @@
-function bar (callback) {
-    foo(function (err, data) {
-        if (err)
-            return callback(err) // early return
+let filterFn = require('./module.js');
+let folder = process.argv[2];
+let ext = process.argv[3];
 
-        // ... no error, continue doing cool things with `data`
+filterFn(folder, ext, function (err, list) {
+    if (err) return console.error("There was an error:", err);
 
-        // all went well, call callback with `null` for the error argument
-
-        callback(null, data)
-    })
-
-}
+    list.forEach(file => console.log(file));
+});
 
 // TEST

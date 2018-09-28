@@ -4,7 +4,7 @@ let path = require('path');
 let folder = process.argv[2];
 let ext = "." + process.argv[3];
 
-fs.readdir(folder, (err, list) => {
+let func = fs.readdir(folder, (err, list) => {
     if (err) return console.error(err);
     for (i in list) {
         if (path.extname(list[i]) === ext) {
@@ -12,6 +12,7 @@ fs.readdir(folder, (err, list) => {
         }
     }
 });
+
 
 // Offical version //
 // var fs = require('fs');
