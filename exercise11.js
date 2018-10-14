@@ -1,3 +1,5 @@
+// helped by: https://docs.nodejitsu.com/articles/advanced/streams/how-to-use-fs-create-read-stream/
+
 let http = require('http');
 let fs = require('fs');
 let portNumber = process.argv[2];
@@ -27,3 +29,5 @@ let server = http.createServer(function (req, res) {
 // });
 //
 // server.listen(Number(process.argv[2]));
+
+
