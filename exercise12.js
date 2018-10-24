@@ -1,15 +1,13 @@
 let http = require('http');
-let fs = require('fs');
+let map = require('through2-map');
 let portNumber = process.argv[2];
 
 let server = http.createServer(function (req, res) {
-    let filename = process.argv[3];
-    let readStream = fs.createReadStream(filename);
-    readStream.on('open', function () {
-        readStream.pipe(res);
-    });
+    if (req.method !== 'POST') {
+        return res.end('Send me a POST\n');
+    }
 
-    readStream.on('error', function(err) {
-        res.end(err);
-    })
+    req.pipe(map(function (chunk) {
+        return chunk.toString().toUpperCase()
+    })).pipe(res);
 }).listen(portNumber);
